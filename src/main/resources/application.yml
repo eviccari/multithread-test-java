@@ -1,0 +1,6 @@
+spring:
+    datasource:
+        url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/greatest_users
+        username: user_service
+        password: 123
+        driver-class-name: com.mysql.cj.jdbc.Driver
