@@ -1,5 +1,8 @@
 package br.com.greatest_company.multithread_test_java;
 
+import br.com.greatest_company.multithread_test_java.adapters.repositories.GithubUserHTTPRepository;
+import br.com.greatest_company.multithread_test_java.app.domain.dtos.GithubUserDTO;
+import br.com.greatest_company.multithread_test_java.app.domain.services.GithubUserServiceImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,7 +19,12 @@ public class ApplicationStarter implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("EXECUTEI COM SUCESSO");
+		var repo = new GithubUserHTTPRepository();
+		var service = new GithubUserServiceImpl(repo);
+		var result = service.get(10, 0);
+		for(GithubUserDTO dto : result) {
+			log.info(dto.toString());
+		}
 	}
 
 }

@@ -25,7 +25,7 @@ public class GithubUserDTO implements Serializable{
 	
     @Getter
     @Setter
-    private String nodeID;  
+    private String node_id;
 	
     @Getter
     @Setter
@@ -33,7 +33,7 @@ public class GithubUserDTO implements Serializable{
 	
     @Getter
     @Setter
-	private String htmlurl; 
+	private String html_url;
 
     @Override
     public String toString() {
