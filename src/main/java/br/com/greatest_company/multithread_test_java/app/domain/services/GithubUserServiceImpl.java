@@ -7,10 +7,15 @@ import br.com.greatest_company.multithread_test_java.app.domain.exceptions.BadRe
 import br.com.greatest_company.multithread_test_java.app.domain.exceptions.InternalServerErrorException;
 import br.com.greatest_company.multithread_test_java.app.domain.exceptions.UnprocessableEntityException;
 import br.com.greatest_company.multithread_test_java.app.domain.models.GithubUserPoliciesManager;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+@Slf4j
 public class GithubUserServiceImpl implements GithubUserService{
 
     private GithubUserRepository repo;
@@ -35,7 +40,11 @@ public class GithubUserServiceImpl implements GithubUserService{
                 pm.apply();
                 result.add(guserDTO);
             } catch (UnprocessableEntityException e) {
-                throw new RuntimeException(e);
+                log.info(String.format(
+                        "user: %s have failed with policies: %s",
+                        guserDTO.getLogin() != null ? guserDTO.getLogin() : "NA",
+                        e.getMessage())
+                );
             }
         }
 

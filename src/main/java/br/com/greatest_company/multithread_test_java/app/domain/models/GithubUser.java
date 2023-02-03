@@ -18,23 +18,23 @@ public class GithubUser implements Serializable, Validatable{
 
     @Getter
     @Setter
-    private String login;   
+    private String login;
 
     @Getter
-    @Setter	
-    private int id;      
-	
+    @Setter
+    private int id;
+
     @Getter
     @Setter
-    private String nodeID;  
-	
+    private String nodeID;
+
     @Getter
     @Setter
-	private String url;     
-	
+    private String url;
+
     @Getter
     @Setter
-	private String htmlUrl;
+    private String htmlUrl;
 
     @Override
     public String toString() {

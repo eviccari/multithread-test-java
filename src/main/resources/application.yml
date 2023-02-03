@@ -1,6 +1,6 @@
 app-params:
     environment: DEV
-    githubUsersQuantity: 10
+    githubUsersQuantity: 1000
     multiThreadSize: 1
     githubAPIMaxPageSize: 100
     dbUser: user_service

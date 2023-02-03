@@ -7,4 +7,9 @@ public class StringUtils {
     public static final boolean isEmpty(String s) {
         return s == null || s.isEmpty() || s.isBlank() || s.trim() == "";
     }
+
+    public static final boolean isNotEmpty(String s) {
+        return s != null || !s.isEmpty() || !s.isBlank() || s.trim() != "";
+    }
+
 }

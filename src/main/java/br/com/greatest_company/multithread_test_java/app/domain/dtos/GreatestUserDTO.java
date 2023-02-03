@@ -34,11 +34,11 @@ public class GreatestUserDTO implements Serializable{
 
     @Getter
     @Setter	
-    private String legacyURL;      
+    private String legacyUrl;
 
     @Getter
     @Setter	
-    private String legacyHTMLURL; 
+    private String legacyHtmlUrl;
 
     @Getter
     @Setter	
