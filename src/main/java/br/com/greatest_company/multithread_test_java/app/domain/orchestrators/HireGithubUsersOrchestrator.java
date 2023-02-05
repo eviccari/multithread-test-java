@@ -13,6 +13,12 @@ import br.com.greatest_company.multithread_test_java.app.domain.services.Greates
 import br.com.greatest_company.multithread_test_java.configs.JobConfiguration;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Component
 public class HireGithubUsersOrchestrator implements Orchestrator{
@@ -28,7 +34,9 @@ public class HireGithubUsersOrchestrator implements Orchestrator{
 
     @Override
     public void execute() throws InternalServerErrorException, BadRequestException, UnprocessableEntityException {
-        log.info("EXECUTING WITH SINGLE THREAD");
+        log.info("EXECUTING WITH MULTI-THREAD");
+        log.info(String.format("GITHUB_USERS_QUANTITY: %d", this.jobConfiguration.getGithubUsersQuantity()));
+        log.info(String.format("MAX-THREAD-QUANTITY..: %d", this.jobConfiguration.getMultiThreadSize()));
         greatestUserService.setEmpty();
 
         int pageSize = this.jobConfiguration.getGithubUsersQuantity() < this.jobConfiguration.getGithubAPIMaxPageSize() ?
@@ -41,16 +49,31 @@ public class HireGithubUsersOrchestrator implements Orchestrator{
         int since = 0;
         int hired = 0;
 
-        do{
+        while(hired < this.jobConfiguration.getGithubUsersQuantity()){
             var githubUsers = githubUserService.get(pageSize, since);
             if(githubUsers.isEmpty())
                 return;
 
             since = githubUsers.get(githubUsers.size() -1).getId();
-            for (GithubUserDTO dto: githubUsers) {
-                greatestUserService.create(DomainFactory.buildNewFromGithubUserDTO(dto));
-                hired++;
+
+            while(!githubUsers.isEmpty()) {
+                var chunk = this.getChunk(githubUsers);
+                var futures = new ArrayList<CompletableFuture<String>>();
+
+                for(GithubUserDTO guser : chunk) {
+                    var future = greatestUserService.create(DomainFactory.buildNewFromGithubUserDTO(guser));
+                    futures.add(future);
+                    hired++;
+                }
+
+                CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()])).join();
+                githubUsers.removeAll(chunk);
             }
-        }while (hired < this.jobConfiguration.getGithubUsersQuantity());
+        }
+    }
+
+    private List<GithubUserDTO> getChunk(List<GithubUserDTO> gusers) {
+        var size = this.jobConfiguration.getMultiThreadSize() < gusers.size() ? this.jobConfiguration.getMultiThreadSize() : gusers.size();
+        return gusers.subList(0, size);
     }
 }

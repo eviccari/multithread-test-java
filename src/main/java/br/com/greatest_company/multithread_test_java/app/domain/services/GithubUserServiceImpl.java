@@ -3,6 +3,9 @@ package br.com.greatest_company.multithread_test_java.app.domain.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.com.greatest_company.multithread_test_java.adapters.repositories.GithubUserRepository;
 import br.com.greatest_company.multithread_test_java.app.domain.DomainFactory;
 import br.com.greatest_company.multithread_test_java.app.domain.dtos.GithubUserDTO;
@@ -12,14 +15,12 @@ import br.com.greatest_company.multithread_test_java.app.domain.exceptions.Unpro
 import br.com.greatest_company.multithread_test_java.app.domain.models.GithubUserPoliciesManager;
 import lombok.extern.slf4j.Slf4j;
 
+@Service
 @Slf4j
 public class GithubUserServiceImpl implements GithubUserService{
 
+    @Autowired
     private GithubUserRepository repo;
-
-    public GithubUserServiceImpl(GithubUserRepository repo) {
-        this.repo = repo;
-    }
 
     @Override
     public List<GithubUserDTO> get(int pageSize, int since) throws BadRequestException, InternalServerErrorException {
