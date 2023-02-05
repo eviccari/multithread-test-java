@@ -1,0 +1,39 @@
+version: '3.9'
+services:
+  database:
+    networks:
+      - local_network
+    image: mysql:latest
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_DATABASE=greatest_users
+      - MYSQL_USER=user_service
+      - MYSQL_PASSWORD=123
+    volumes:
+      - ".dev/create-table.sql:/docker-entrypoint-initdb.d/1.sql"
+    ports:
+      - "3306:3306"
+  job:
+    depends_on:
+      - database
+    build: .
+    restart: unless-stopped
+    environment:
+      - ENVIRONMENT=DEV
+      - GITHUB_USERS_QUANTITY=100000
+      - MULTITHREAD_SIZE=5
+      - GITHUB_API_MAX_PAGE_SIZE=100
+      - DATABASE_USER_NAME=user_service
+      - DATABASE_USER_PASS=123
+      - DATABASE_HOST_NAME=database
+      - DATABASE_PORT=3306
+      - DATABASE_ENGINE=mysql
+      - DATABASE_NAME=greatest_users
+      - DATABASE_URL=jdbc:mysql://database:3306/greatest_users
+      - DATABASE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+    networks:
+      - local_network
+
+networks:
+  local_network:

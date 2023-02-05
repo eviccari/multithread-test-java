@@ -1,4 +1,4 @@
-FROM openjdk:11-jre-slim
+FROM openjdk:latest
 
 RUN mkdir /opt/app && \
         mkdir /opt/app/config

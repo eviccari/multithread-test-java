@@ -1,21 +1,16 @@
 package br.com.greatest_company.multithread_test_java.adapters.repositories;
 
-import br.com.greatest_company.multithread_test_java.app.domain.dtos.GithubUserDTO;
-import br.com.greatest_company.multithread_test_java.app.domain.exceptions.InternalServerErrorException;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
+import br.com.greatest_company.multithread_test_java.app.domain.dtos.GithubUserDTO;
+import br.com.greatest_company.multithread_test_java.app.domain.exceptions.InternalServerErrorException;
+
+@Repository
 public class GithubUserMockRepository implements GithubUserRepository{
+
     @Override
     public List<GithubUserDTO> get(int pageSize, int since) throws InternalServerErrorException {
         var nextID = ++since;

@@ -24,7 +24,7 @@ public class DBConnection {
         configuration.setPassword(jobConfiguration.getDBPassword());
         configuration.setJdbcUrl(jobConfiguration.getDbURL());
         configuration.setDriverClassName(jobConfiguration.getDbDriverClassName());
-        configuration.setMaximumPoolSize(250);
+        configuration.setMaximumPoolSize(100);
 
         DataSource dataSource = new HikariDataSource(configuration);
         return dataSource;
