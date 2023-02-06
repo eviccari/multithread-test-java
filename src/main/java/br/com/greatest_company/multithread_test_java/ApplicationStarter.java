@@ -3,7 +3,6 @@ package br.com.greatest_company.multithread_test_java;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.concurrent.Executor;
 
 import javax.sql.DataSource;
 
@@ -12,13 +11,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import br.com.greatest_company.multithread_test_java.app.domain.orchestrators.Orchestrator;
 import br.com.greatest_company.multithread_test_java.configs.JobConfiguration;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Bean;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 @SpringBootApplication
 @EnableAsync
