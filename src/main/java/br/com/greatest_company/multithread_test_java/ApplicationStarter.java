@@ -56,15 +56,4 @@ public class ApplicationStarter implements CommandLineRunner{
 			System.exit(1);
 		}
 	}
-
-/*	@Bean
-	public Executor taskExecutor() {
-		var executor = new ThreadPoolTaskExecutor();
-		executor.setCorePoolSize(2);
-		executor.setMaxPoolSize(2);
-		executor.setQueueCapacity(500);
-		executor.setThreadNamePrefix("GreatestUserServiceCreate-");
-		executor.initialize();
-		return executor;
-	} */
 }
