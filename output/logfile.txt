@@ -1,0 +1,26 @@
+☁  target [develop] ⚡  ./my-java-job.sh
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.2)
+
+2023-02-06T11:41:42.457-03:00  INFO 43228 --- [           main] b.c.g.m.ApplicationStarter               : Starting ApplicationStarter v0.0.1-SNAPSHOT using Java 17.0.4.1 with PID 43228 (/Users/viccari/Workspace/java/multithread-test-java/target/multithread-test-java.jar started by viccari in /Users/viccari/Workspace/java/multithread-test-java/target)
+2023-02-06T11:41:42.459-03:00  INFO 43228 --- [           main] b.c.g.m.ApplicationStarter               : No active profile set, falling back to 1 default profile: "default"
+2023-02-06T11:41:42.667-03:00  INFO 43228 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-02-06T11:41:42.675-03:00  INFO 43228 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+2023-02-06T11:41:42.806-03:00  INFO 43228 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-02-06T11:41:43.020-03:00  INFO 43228 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@302a07d
+2023-02-06T11:41:43.021-03:00  INFO 43228 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-02-06T11:41:43.226-03:00  INFO 43228 --- [           main] b.c.g.m.ApplicationStarter               : Started ApplicationStarter in 0.951 seconds (process running for 1.157)
+2023-02-06T11:41:43.228-03:00  INFO 43228 --- [           main] b.c.g.m.ApplicationStarter               : JOB with process ID 43228 starting now: 2023-02-06T11:41:43.227884
+2023-02-06T11:41:43.228-03:00  INFO 43228 --- [           main] .c.g.m.a.d.o.HireGithubUsersOrchestrator : EXECUTING WITH MULTI-THREAD
+2023-02-06T11:41:43.235-03:00  INFO 43228 --- [           main] .c.g.m.a.d.o.HireGithubUsersOrchestrator : GITHUB_USERS_QUANTITY: 1000000
+2023-02-06T11:41:43.235-03:00  INFO 43228 --- [           main] .c.g.m.a.d.o.HireGithubUsersOrchestrator : MAX-THREAD-QUANTITY..: 250
+2023-02-06T11:46:07.945-03:00  INFO 43228 --- [           main] b.c.g.m.ApplicationStarter               : JOB finish at: 2023-02-06T11:46:07.945351
+2023-02-06T11:46:07.951-03:00  INFO 43228 --- [           main] b.c.g.m.ApplicationStarter               : total time secs: 264
+2023-02-06T11:46:07.958-03:00  INFO 43228 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-02-06T11:46:08.033-03:00  INFO 43228 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
