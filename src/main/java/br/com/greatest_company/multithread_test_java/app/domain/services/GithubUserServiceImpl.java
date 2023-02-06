@@ -43,6 +43,7 @@ public class GithubUserServiceImpl implements GithubUserService{
                         guserDTO.getLogin() != null ? guserDTO.getLogin() : "NA",
                         e.getMessage())
                 );
+                throw new InternalServerErrorException(e.getMessage());
             }
         }
 

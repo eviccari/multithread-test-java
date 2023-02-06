@@ -1,5 +1,9 @@
 package br.com.greatest_company.multithread_test_java.app.domain.orchestrators;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +16,6 @@ import br.com.greatest_company.multithread_test_java.app.domain.services.GithubU
 import br.com.greatest_company.multithread_test_java.app.domain.services.GreatestUserService;
 import br.com.greatest_company.multithread_test_java.configs.JobConfiguration;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Component
