@@ -9,8 +9,8 @@ Este projeto tem por objetivo analisar vantagens e desvantagens ao utilizar [Gol
     - Legibilidade + Manutenibilidade (um pouco subjetivo, deve ser analisado por pares)
 
 ## Tecnologias
-    - Java 11
-    - Spring Boot 3.0.2
+    - Java 17
+    - Quakus 2.15.3.Final
     - MySQL ${latest}
     - Docker Engine
     - Docker Compose
